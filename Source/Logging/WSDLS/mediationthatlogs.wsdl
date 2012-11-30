@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Created by TIBCO WSDL-->
+<wsdl:definitions xmlns:tns="urn:amx:BPMEnvironment/MediationThatLogsComposite" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://www.siemens.com/medical/bpuia/samples/logging/services/MediationThatLogs/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="MediationThatLogsComponent_1.0.0.201211291429_service_MediationThatLogs_MediationThatLogs" targetNamespace="urn:amx:BPMEnvironment/MediationThatLogsComposite">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.siemens.com/medical/bpuia/samples/logging/services/MediationThatLogs/" elementFormDefault="qualified" attributeFormDefault="unqualified">
+            <xs:element name="MediationOperationRequest">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="in" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="MediationOperationResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="out" form="unqualified" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="MediationOperationRequestMsg">
+        <wsdl:part name="parameters" element="ns0:MediationOperationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="MediationOperationResponseMsg">
+        <wsdl:part name="parameters" element="ns0:MediationOperationResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="MediationThatLogs">
+        <wsdl:operation name="MediationOperation">
+            <wsdl:input message="tns:MediationOperationRequestMsg"/>
+            <wsdl:output message="tns:MediationOperationResponseMsg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAPService_BindingM" type="tns:MediationThatLogs">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="MediationOperation">
+            <wsdl:documentation/>
+            <soap:operation style="document" soapAction="MediationOperation"/>
+            <wsdl:input>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" parts="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="MediationThatLogsComponent_1.0.0.201211291429_service_MediationThatLogs_MediationThatLogs">
+        <wsdl:port name="SOAPService_BindingM" binding="tns:SOAPService_BindingM">
+            <soap:address location="http://0.0.0.0:38080/mediationThatLogs/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
